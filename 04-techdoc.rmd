@@ -1,0 +1,49 @@
+# Technical documentation
+
+This part is the technical documentation of programming part behind this study. In some sense the code should be self explanatory as it is well commented, but it is understandable that it is not very clear for those who are not familiar with the programming language used -- R. I have tried to explain some very basic concepts so that also non-technical readers can familiarize themselves with this section, but the point of that is to explain what the code does, what is the human logic behind it and what are the tasks it does. The idea is not to make the code itself understandable for everyone, as this probably would not be possible. However, explaining the logic behind it must be possible.
+
+## Code
+
+I had initially named this section as **Scripts**, however, it doesn't really describe well R based workflows. A script usually refers to a chunk of code which is executed relatively statically. It is ran, and something happens. However, scripts can often be given arguments, for example, one could specify input and output and give some additional parameters for the script.
+
+A function doesn't differ particularly much from this, but it is more flexible unit that can be called from within different code chunks. So instead of taking x and producing y, a function can be a part of workflow where different function are interacting with one another without saving the intermediate files inbetween. Only actual *script* used here is **compile.R** file which has to be executed in order to compile this document.
+
+In my workflow used in this study the following tasks have been assigned to different R functions.
+
+- CYR to IPA conversion
+- FRelan R package for daily tasks of loading files
+- Extracting sibilant values
+- Matching lexical items
+- Reading metadata
+- Counting occurrences in the context
+- Visualizations
+- Statistical analysis
+
+## Conversion patterns
+
+The automatic conversion from Cyrillic transcription to IPA plays rather important part in this study, so how exactly this conversion is done is important to document. The patterns are stored in `ikdp2ipa.csv` file, and they can be freely examined or reused.
+
+## Functions
+
+### sle2016partanen::transliterate
+
+The transliteration pattern has currently some shortcomings, but they are relatively minimal and as every item as to be gone through manually anyway, this is not really an issue. For example, it is not always transparent whether consecutive sibilants such as **ссь** represent combination **ɕɕ** or **sɕ**. Naturally, there is often some kind of assimilation going on there anyway, although trying to identify the pattern in this could be useful task in itself later.
+
+What is written above is mainly about the pattern involved, the idea being that `transliterate` function can take basically any CSV-formatted file from where it read the patters. Why CSV and not something fancier? Because editing CSV is EASY.
+
+```{r echo=T, eval=T}
+sle2016partanen::transliterate
+```
+
+### sle2016partanen::sib_tier_cyr2ipa
+
+`transliterate` function is now hard-coded into this so that it runs ikdp2ipa conversion to the sib-tier. In principle this function could be generalized into something more abstract with the idea **take the tier elements, do something for each item, put them back**.
+
+```{r echo=T, eval=T}
+sle2016partanen::sib_tier_cyr2ipa
+```
+
+## Manual tasks
+
+Basic annotations on ELAN files are done manually. Similarly the work relies to many features of ELAN, for example, tokenization and copying tiers is done with built-in tools.
+

@@ -1,0 +1,23 @@
+---
+title: "Russian influence on Iźva Komi sibilant articulation"
+author: | 
+  | Niko Partanen
+  | University of Hamburg
+date: "30 April 2016"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  word_document: default
+mainfont: Charis SIL
+bibliography: /Users/niko/FRibliography/bibtex/FRibliography.bib
+---
+
+The Uralic language Komi Zyrian distinguishes several **palatal consonants** as their own phonemes. This differs from the **palatalized consonants** found in Russian. In some varieties of the Iźva dialect, the sibilants /ɕ/ and /ʑ/ have shifted to a palatalized manner of articulation. This feature is often characteristic of the Komi spoken in Western Siberia and on the Kanin and Kola Peninsulas. It is also clear that other authors have perceived this difference, i.e. by transcribing with /ś/ and /š́/ what presumably is the difference between /sʲ/ and /ɕ/ (cf. Iźva varieties in [@uotila1986a] with many different sibilant allophones). Native speakers also occasionally comment on this feature. This change is likely, though not necessarily, induced by Russian contact. As a change within allophonic variants, this change has had no impact on the Komi phonological system. To make a comparison, this already makes the contact outcome different from that of other Uralic language, Kildin Saami, where Russian influence has slightly changed the phonotaxis of palatalized consonants, among other things, as analyzed by Blokland et al. [-@bloklandEtAl2011a, 16] and Kuzmenko et al. [-@kuzmenkoEtAl2012aTR].
+
+I have examined this phenomenon in connection with the **adaptation of Russian loanwords in spoken Komi**. The latter topic has generally received some attention, i.e. [@igusev1972cTR]; for an overview of the language contact situation, see [@leinonen2009a]. Due to bilingualism, Komi speakers always have the option of pronouncing the sibilants in lexical items such as 'September' following the Russian or Komi model, respectively /sʲenʲtʲabrʲ/ or /ɕeɲcabr/, with variation in levels of adaptation. When analyzed in a modern sociolinguistic framework where variables are seen as expressions of styles and social identities, not as permanent attributes of the speakers, e.g. [@eckert2012a, 93–94], this variation can be described within the context where it occurs. Among the relevant factors, formality seems to be salient: speech in an educational setting, official speeches or interviews exhibit more standard Komi pronunciation than informal conversations. The social relevance of this variation is connected to the perception that the palatalized pronunciation is not native to Komi. However, while the palatalized pronunciation can be perceived as a Russian accent, an overly Komi pronunciation of Russian lexical items can also be interpreted as an inability to pronounce Russian – something that seems to be poorly accepted in modern Russia. One must also note that for some speakers the palatalized pronunciation can be considered the unmarked variant.
+
+The analysis is based on a transcribed corpus of spoken Iźva Komi collected as part of a research project funded by Kone Foundation between 2014 and 2016. This larger body of data has been sampled so that there are examples from different age groups and different areas where Iźva Komi is spoken. Tools of phonetic analysis are used to measure the different variables and the distribution and relevance of the results are validated with statistical tests. In 2016, the material will be stored and archived in different repositories with the rest of the Komi corpus, making them available for scientific use and ensuring the reproducibility of the research.
+
+## References
+
+

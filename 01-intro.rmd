@@ -1,0 +1,69 @@
+# Introduction
+
+<!-- <center><iframe width="100%" height="500" src="abstract.pdf"></iframe></center> -->
+
+The Uralic language Komi Zyrian distinguishes several **palatal consonants** as their own phonemes. This differs from the **palatalized consonants** found in Russian. In some varieties of the Iźva dialect, the sibilants /ɕ/ and /ʑ/ have shifted to a palatalized manner of articulation. This feature is often characteristic of the Komi spoken in Western Siberia and on the Kanin and Kola Peninsulas. It is also clear that other authors have perceived this difference, i.e. by transcribing with /ś/ and /š́/ what presumably is the difference between /sʲ/ and /ɕ/ (cf. Iźva varieties in [@uotila1986a] with many different sibilant allophones). This change is likely, though not necessarily, induced by Russian contact. As a change within allophonic variants, this change has had no impact on the Komi phonological system. This already makes the contact outcome different from that of Kildin Saami, where Russian influence has slightly changed the phonotaxis of palatalized consonants, among other things, as analyzed by Blokland et al. [-@bloklandEtAl2011a, 16] and Kuzmenko et al. [-@kuzmenkoEtAl2012aTR].
+
+I have examined this phenomenon in connection with the **adaptation of Russian loanwords in spoken Komi**. The latter topic has received some attention, i.e. [@igusev1972cTR]; for an overview of the language contact situation, see [@leinonen2009a]. Due to bilingualism, Komi speakers always have the option of pronouncing the sibilants in lexical items such as 'September' following the Russian or Komi model, respectively /sʲenʲtʲabrʲ/ or /ɕeɲcabr/, with much variation in levels of adaptation. When analyzed in a modern sociolinguistic framework where variables are seen as expressions of styles and social identities, not as permanent attributes of the speakers, e.g. [@eckert2012a, 93–94], this variation can be described within the context where it occurs. Among the relevant factors, formality seems to be salient: speech in an educational setting, official speeches or interviews exhibit more standard Komi pronunciation than informal conversations. The social relevance of this variation is connected to the perception that the palatalized pronunciation is not native to Komi. However, while the palatalized pronunciation can be perceived as a Russian accent, an overly Komi pronunciation of Russian lexical items can also be interpreted as an inability to pronounce Russian – something that seems to be poorly accepted in modern Russia. One must also note that for some speakers the palatalized pronunciation can be considered the unmarked variant.
+
+The analysis is based on a transcribed corpus of spoken Iźva Komi collected as part of a research project funded by Kone Foundation between 2014 and 2016. This larger body of data has been sampled so that there are examples from different age groups and different areas where Iźva Komi is spoken. Tools of phonetic analysis are used to measure the different variables and the distribution and relevance of the results are validated with statistical tests. In 2016, the material will be stored and archived in different repositories with the rest of the Komi corpus, making them available for scientific use and ensuring the reproducibility of the research.
+
+## Transcription system
+
+Uralic Phonetic Alphabet (henceforth UPA) is commonly used transcription system in Uralistics. It is very exact and in all real applications interchangeable with IPA. The main issue I see with UPA is that it is used in widely different manner by different researchers in the descriptions of different languages. This creates rather good uniformity within language varieties, i.e. transcribed Komi follows more or less the same conventions, as does transcribed Meadow Mari or Tundra Nenets, but these transcriptions are not easily comparable. And although being very exact in many nuances, it is well known that UPA does not distinguish **palatal place of articulation** from **palatalized manner of articulation**. Thereby following grapheme when used in transcription:
+
+> ś
+
+Could represent either phones
+
+> sʲ or ɕ
+
+There are very few languages in which these variants would be phonemically distinct. Naturally one can always come up with ad-hoc conventions to mark these differences, but this again feeds to the problem I described above: lack of comparability between transcripts.
+
+### Transcription system used in this study {#transcription-system}
+
+The transcription system used in Iźva Komi Documentation Project is in Cyrillic and it follows closely the conventions of Komi orthography. It is the same transcription system used in new Komi dialect dictionaries published recently [@beznosikovaEtAl2012a]. It doesn't mark allophonic variatian, but captures Komi phoneme inventory in a very satisfactory manner. As every pohonene is represented, it is possible to convert this transcription into other transcription systems, such as IPA or UPA. In this study I have used IPA as described in the International Phonetic Association's handbook [@ipa1999a].
+
+The Cyrillic transcription used in IKDP is essentially phonemic, but due to conventions of Cyrillic orthography there is no one-to-one correspondence between the characters used. Instead, there are complex one-to-many correspondences, which nevertheless are systematic and resolving between these should, in principle, be possible in all cases. There are some corner cases and murky areas in Komi phonology, but in the larger picture those do not problematize the situation too much. There are several good reasons to select Cyrillic based orthography in the first place:
+
+- Orthography represents already Komi phoneme inventory very well
+- There is already good amount of language technology around Komi Zyrian written language, using Cyrillic transcription makes that compatible
+- Native speakers have more immediate access to the data
+- Cyrillic transcription is relatively ignorant about the realizations of underlying allophones, so one can conveniently remain at the phoneme level without putting spoon into too many soups
+
+## Phenomena
+
+Russian and Komi have relatively similar phonological distinction between plain velars and their "soft" variants. Orthographically they are marked similarly in both languages, using same conventions of Cyrillic orhography. The actual realizations of the phones, the allophones, within these phonemes are often rather distinct, Russian phoneme usually being rather prototypical alveolar palatalized sibilant /sʲ/. In Komi the phoneme in question is relatively different /ɕ/.  Russian also contains phone [ɕ:], phonemic status of which seems to be debated [@chew2003a, 64], marked with Cyrillic grapheme \<щ\>. This phone seems to be very close to the phoneme /ɕ/ found in Komi.
+
+<!-- prostoj : proɕ:e 
+     osʲenʲ : osʲenʲu-
+     счастье > [ˈɕːæsʲtʲjə] 
+     -->
+
+## Research questions
+
+* Is the variation connected to language contact
+* If so, is Russian the source language
+* How this variation can be described
+* What is the areal scope of this variation
+* What is the temporal scope of this variation
+* Is the variant sociolinguistically significant
+
+If some of these questions cannot be answered, the reasons to this would also be worth its own investigation.
+
+## Data
+
+All my data comes from Iźva Komi Documentation Project which has been funded by Kone Foundation in 2014-2016 and led by Rogier Blokland, Michael Rießler and Marina Fedina. For the first two years of the project I worked in it as a full time PhD student, and my tasks were closely connected to curating, extending and annotating the Komi corpus in question. The project has collected large amount of new data from the areas where Iźva Komi is spoken, but at the same time it is closely connected to older data sources. Naturally, there is no thinking that we would be the first researchers collecting data from these speech varieties -- already M.A. Castrén wrote his grammar based to this variery [@castren1844a].
+
+Although the majority of our effort has gone to working with our own data, we have also incorporated to the corpus data from variety of older sources. We have prioritized the data for which audio recordings exist, but even the materials with no audio can be extremely valuable. Naturally with mere transcriptions there arises the issue of verification -- it is not possible to examine more closely what lies behind the transcribed segments. On the other hand, I think we must start our work with the expectation that the scholars who have worked before us must have had similarly high standards as we do. In some sense also quantity can be used to verify the quality, as the transcriptions which show systematic patterns in larger amounts of text are very likely valid. More so if these patterns are somehow connected to what can be observed in the current and contemporary recordings.
+
+The availability of earlier materials makes contemporary language corpora very heterogenic. Or better to say, they have the potential to do this. Many corpora are still created on basis of individual recording sessions in a fairly traditional settings, but as the world is full of online resources and printed materials, one is often tempted to include these into corpus whenever possible. This makes corpus curation more complicated task, and it demands that the corpus user has some access and understanding of the overall structure of the corpus. In real world applications the data selected for research use would often be a sample from the complete corpus. This sounds in many ways like a normal scientific procedure, so I think one can assume that's a good way to go.
+
+In my case the most important subcorpora have been the Nenets Autonomous Okrug section of Iźva Komi Documentation Project, transcriptions provided in Syrjänische Texte II by T.E. Uotila, the recordings of Eric Vászolyi from Kanin Peninsula and Kolva region, and the TV broadcasts of Radio Yamala in early winter of 2016.
+
+### Open issues with data
+
+* Lack of data from Russian dialects
+* What are the limitations of language documentation corpora
+* Can TV broadcast data be used to phonetic analysis?
+* How to differentiate Russian loanwords from already native elements (for example, very old opaque loanwords)

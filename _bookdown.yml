@@ -1,0 +1,6 @@
+book_filename: "sle2016partanen.Rmd"
+chapter_name: "Section "
+edit:
+  link: https://github.com/nikopartanen/sle2016partanen
+  text: "Edit"
+output_dir: "book"

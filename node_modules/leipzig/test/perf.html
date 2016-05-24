@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leipzig Performance Testing</title>
+  <link rel="stylesheet" href="../dist/leipzig.css">
+</head>
+<body>
+  <button id="test-runner">Run Glosser</button>
+  <button id="test-reset">Reset Test</button>
+
+  <hr id="test-divider">
+
+  <script src="../dist/leipzig.js"></script>
+  <script>
+    var body = document.querySelector('body');
+    var testRunner = document.querySelector('#test-runner');
+    var reset = document.querySelector('#test-reset');
+    var testDivider = document.querySelector('#test-divider');
+
+    function addGlosses() {
+      // add a ton of glosses to the page
+      var numGlosses = 1;
+      var gloss = '<div data-gloss>' +
+        '<p>{}</p>' +
+        '<p>{}</p>' +
+        '<p>Contains Spacers</p>' +
+        '</div>';
+      for (var i = 0; i < numGlosses; i++) {
+        testDivider.insertAdjacentHTML('afterend', gloss);
+      }
+    }
+
+    function resetGlosses() {
+      var glosses = document.querySelectorAll('[data-gloss]');
+      for (var i = glosses.length - 1; i >= 0; i--) {
+        body.removeChild(glosses[i]);
+      }
+      addGlosses();
+    }
+
+    function runTest() {
+      var leipzig = Leipzig();
+      var start = Date.now();
+      var end;
+
+      leipzig.gloss(function() {
+        end = Date.now();
+        console.log('test complete');
+      });
+      console.log(leipzig);
+
+      return end - start;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      addGlosses();
+    });
+
+    testRunner.addEventListener('click', function() {
+      var numTests = 10;
+      var results = [];
+
+      for (var i = 0; i < numTests; i++) {
+        results.push(runTest());
+        resetGlosses();
+      }
+
+      var sum = results.reduce(function(s, v) { return s + v; }, 0);
+      var avg = (sum / 1000) / results.length;
+      console.log('Average time: ' + avg);
+    });
+
+    reset.addEventListener('click', resetGlosses);
+  </script>
+
+  <!-- SCRATCHPAD ----------------------------------------------------------->
+  <script>
+    function t() {
+      document.addEventListener('gloss:afterAlign', function(e) {
+        var firstLine = e.detail.firstLineNum;
+        var lastLine = e.detail.lastLineNum;
+        var lines = e.detail.lines;
+      });
+
+      var leipzig = Leipzig({ spacing: false });
+
+      try {
+        console.log('start', leipzig);
+        leipzig.gloss(function() { console.log('callback'); });
+        console.log('after');
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  </script>
+</body>
+</html>

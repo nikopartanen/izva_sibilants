@@ -1,0 +1,29 @@
+--- 
+title: "Russian influence on Iźva Komi sibilant articulation"
+author: "Niko Partanen"
+date: "`r Sys.Date()`"
+bibliography: [~/FRibliography/bibtex/FRibliography.bib, packages.bib]
+knit: "bookdown::render_book"
+output:
+  bookdown::gitbook:
+    config:
+      toc:
+        before: null
+        after: null
+  bookdown::tufte_html_book:
+    toc: yes
+    css: toc.css
+  bookdown::pdf_book:
+    keep_tex: no
+    latex_engine: xelatex
+  bookdown::html_chapters: default
+documentclass: book
+link-citations: yes
+---
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

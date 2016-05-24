@@ -1,0 +1,8 @@
+Package: sle2016partanen
+Title: Niko Partanen's R toolkit for SLE 2016 conference
+Version: 0.0.0.9000
+Authors@R: person("Niko", "Partanen", email = "nikotapiopartanen@gmail.com", role = c("aut", "cre"))
+Description: This packace accompanies the study Niko Partanen has been conducting for SLE 2016 conference
+Depends: R (>= 3.2.3)
+License: CC-BY
+LazyData: true

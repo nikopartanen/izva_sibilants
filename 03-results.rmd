@@ -1,0 +1,34 @@
+# Conclusions
+
+```{r, echo=F, eval=T}
+library(FRelan)
+library(plyr)
+library(dplyr)
+library(xml2)
+eaf <- list.files("/Volumes/langdoc/langs/kpv/", pattern = ".eaf$", recursive = T, full.names = T)
+# eaf_xml <- llply(eaf, read_xml)
+# read_tier("/Volumes/langdoc/langs/kpv//kpv_izva20120111VVF-1/kpv_izva20120111VVF-1.eaf", linguistic_type = "sib", participant = ) %>%
+#         rename(sib = Content) %>%
+#         select(Speaker, sib) %>% mutate(sib_value = gsub("(\U0047\U0361\U0255|\U0047\U0361\U0291)", "", sib))
+```
+
+With many earlier studies it has been taken as granted that Iźva dialect of Komi Zyrian would have palatalized sibilants as a characteristic feature of this dialect, see for example [@igusev1972aTR], or their status is left uncovered but explicitly shows as same as in Standard Komi [@saxarovaEtAl1976a]. My study clearly challenges this view and proposes that in principle Iźva Komi has identical system of sibilants as there is in the Standard Komi, but some subvarieties of Iźva Komi differ from this. It is important to notice, that in the wider ethno-historical context it is necessary to view the palatalal sibilants as the primary and earlier feature of Iźva Komi, and the forms found in different subdialects as a later innovation.
+
+The source of palatalized manner of articulation is most likely contact with Russian. However, placing these developments into their complete contexts is a more difficult undertaking. It has been described in earlier studies how the Russian dialects in Ust'-Tsilma area have been in mutual influence with Iźva Komi for several centuries, and this has to be taken into account somehow, especially when palatalization in itself seems to be typical for those Iźva varieties spoken way outside this contact sphere. Since it occurs in both extremes of Iźva territory: Kola Peninsula and Siberia, one must conclude that the most likely point of origin is somewhere in Mala- and Bol'šemel'skaya Tundra.
+
+## Stable variation or change in progress
+
+## Variation of variable 
+
+## Comparable case studies
+
+This section is just for personal notes. One should collect a good list of similar case studies so that it would be easier to imitate their methodology and style.
+
+### Final sibilant deletion in Brazilian Portuguese
+
+This is reported i.e. in [@bayleyEtAl2007a, p. 8].
+
+### Salvadoran Spanish -s deletion and aspiration
+
+Some Hoffman has been studying this quite a bit.
+

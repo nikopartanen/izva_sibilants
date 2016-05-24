@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1111.005px" height="751.396px" viewBox="-111.006 -51.396 1111.005 751.396"
+	 enable-background="new -111.006 -51.396 1111.005 751.396" xml:space="preserve">
+<g id="svg2700" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:dc="http://purl.org/dc/elements/1.1/" inkscape:output_extension="org.inkscape.output.svg.inkscape" sodipodi:version="0.32" sodipodi:docname="Blank vowel trapezoid.svg" inkscape:version="0.46" sodipodi:docbase="C:\Backups from C\Eigene Bilder\Phonology">
+	
+		<sodipodi:namedview  bordercolor="#666666" id="base" showgrid="true" inkscape:zoom="1.1921919" pagecolor="#ffffff" inkscape:cx="499.88064" inkscape:cy="349.61479" borderopacity="1.0" inkscape:current-layer="layer1" inkscape:pageshadow="2" inkscape:document-units="px" inkscape:pageopacity="0.0" inkscape:window-x="0" inkscape:window-height="1109" inkscape:window-y="33" inkscape:window-width="1600">
+		<inkscape:grid  type="xygrid" visible="true" id="grid2384" enabled="true"></inkscape:grid>
+	</sodipodi:namedview>
+	<defs>
+		
+		
+			<inkscape:perspective  inkscape:persp3d-origin="490 : 240 : 1" id="perspective61" inkscape:vp_x="0 : 360 : 1" sodipodi:type="inkscape:persp3d" inkscape:vp_z="980 : 360 : 1" inkscape:vp_y="0 : 1000 : 0">
+			</inkscape:perspective>
+		
+			<inkscape:perspective  inkscape:persp3d-origin="372.04724 : 350.78739 : 1" id="perspective2425" inkscape:vp_x="0 : 526.18109 : 1" sodipodi:type="inkscape:persp3d" inkscape:vp_z="744.09448 : 526.18109 : 1" inkscape:vp_y="0 : 1000 : 0">
+			</inkscape:perspective>
+	</defs>
+	<g id="trapezium" transform="matrix(0.9130369,0,0,0.9130369,95.643035,784.10031)">
+		<path id="path1" sodipodi:nodetypes="ccccc" fill="none" stroke="#000000" stroke-width="4.381" d="M4.13-803.09l876.006-0.929
+			l1.213,657.989l-439.681-1.217L4.13-803.09z"/>
+		<path id="path2" fill="none" stroke="#000000" stroke-width="4.381" d="M442.597-803.09l217.376,655.844"/>
+		<path id="path3" fill="none" stroke="#000000" stroke-width="4.381" d="M150.905-583.857l729.231-0.929"/>
+		<path id="path4" fill="none" stroke="#000000" stroke-width="4.381" d="M298.609-364.623l579.669-1.858h0.929v-0.929"/>
+	</g>
+</g>
+<g id="blank">
+	<rect x="75.243" y="30.778" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="463.392" y="21.778" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="840.705" y="27.618" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="522.444" y="212.942" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="178.183" y="212.942" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="848.004" y="211.567" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="845.085" y="411.575" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="582.301" y="413.034" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="318.057" y="414.494" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="448.281" y="613.542" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="848.877" y="613.542" fill="#FFFFFF" width="102.94" height="74.455"/>
+	<rect x="548.301" y="315.157" fill="#FFFFFF" width="102.94" height="74.455"/>
+</g>
+<g id="labels">
+	<text transform="matrix(1 0 0 1 867.3937 0.5077)" font-family="'CharisSIL'" font-size="30">Back</text>
+	<text transform="matrix(1 0 0 1 635.5781 0.0163)" font-family="'CharisSIL'" font-size="30">Near-back</text>
+	<text transform="matrix(1 0 0 1 441.6051 -0.8372)" font-family="'CharisSIL'" font-size="30">Central</text>
+	<text transform="matrix(1 0 0 1 232.425 0.0163)" font-family="'CharisSIL'" font-size="30">Near-front</text>
+	<text transform="matrix(1 0 0 1 50.2443 -0.837)" font-family="'CharisSIL'" font-size="30">Front</text>
+	<text transform="matrix(1 0 0 1 -18.1307 61.0058)" font-family="'CharisSIL'" font-size="30">Close</text>
+	<text transform="matrix(1 0 0 1 -86.2312 164.2034)" font-family="'CharisSIL'" font-size="30">Near-close</text>
+	<text transform="matrix(1 0 0 1 -79.2441 260.3502)" font-family="'CharisSIL'" font-size="30">Close-mid</text>
+	<text transform="matrix(1 0 0 1 0.253 364.7393)" font-family="'CharisSIL'" font-size="30">Mid</text>
+	<text transform="matrix(1 0 0 1 -78.9803 464.3719)" font-family="'CharisSIL'" font-size="30">Open-mid</text>
+	<text transform="matrix(1 0 0 1 -85.1913 576.959)" font-family="'CharisSIL'" font-size="30">Near-open</text>
+	<text transform="matrix(1 0 0 1 -17.8672 650.7695)" font-family="'CharisSIL'" font-size="30">Open</text>
+</g>
+</svg>
