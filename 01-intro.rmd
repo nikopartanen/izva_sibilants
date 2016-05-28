@@ -2,11 +2,40 @@
 
 <!-- <center><iframe width="100%" height="500" src="abstract.pdf"></iframe></center> -->
 
-The Uralic language Komi Zyrian distinguishes several **palatal consonants** as their own phonemes. This differs from the **palatalized consonants** found in Russian. In some varieties of the Iźva dialect, the sibilants /ɕ/ and /ʑ/ have shifted to a palatalized manner of articulation. This feature is often characteristic of the Komi spoken in Western Siberia and on the Kanin and Kola Peninsulas. It is also clear that other authors have perceived this difference, i.e. by transcribing with /ś/ and /š́/ what presumably is the difference between /sʲ/ and /ɕ/ (cf. Iźva varieties in [@uotila1986a] with many different sibilant allophones). This change is likely, though not necessarily, induced by Russian contact. As a change within allophonic variants, this change has had no impact on the Komi phonological system. This already makes the contact outcome different from that of Kildin Saami, where Russian influence has slightly changed the phonotaxis of palatalized consonants, among other things, as analyzed by Blokland et al. [-@bloklandEtAl2011a, 16] and Kuzmenko et al. [-@kuzmenkoEtAl2012aTR].
+I start this study with citation from one of the conversations which initially pointed me that this phenomena exists and there is some potential for further research. One of my Komi teachers in Syktyvkar, folklorist Valentina Viktorovna, once recalled after days lectures how she had encountered different patterns of pronunciation, in this case in Siberia.
 
-I have examined this phenomenon in connection with the **adaptation of Russian loanwords in spoken Komi**. The latter topic has received some attention, i.e. [@igusev1972cTR]; for an overview of the language contact situation, see [@leinonen2009a]. Due to bilingualism, Komi speakers always have the option of pronouncing the sibilants in lexical items such as 'September' following the Russian or Komi model, respectively /sʲenʲtʲabrʲ/ or /ɕeɲcabr/, with much variation in levels of adaptation. When analyzed in a modern sociolinguistic framework where variables are seen as expressions of styles and social identities, not as permanent attributes of the speakers, e.g. [@eckert2012a, 93–94], this variation can be described within the context where it occurs. Among the relevant factors, formality seems to be salient: speech in an educational setting, official speeches or interviews exhibit more standard Komi pronunciation than informal conversations. The social relevance of this variation is connected to the perception that the palatalized pronunciation is not native to Komi. However, while the palatalized pronunciation can be perceived as a Russian accent, an overly Komi pronunciation of Russian lexical items can also be interpreted as an inability to pronounce Russian – something that seems to be poorly accepted in modern Russia. One must also note that for some speakers the palatalized pronunciation can be considered the unmarked variant.
+```{r, echo=F}
 
-The analysis is based on a transcribed corpus of spoken Iźva Komi collected as part of a research project funded by Kone Foundation between 2014 and 2016. This larger body of data has been sampled so that there are examples from different age groups and different areas where Iźva Komi is spoken. Tools of phonetic analysis are used to measure the different variables and the distribution and relevance of the results are validated with statistical tests. In 2016, the material will be stored and archived in different repositories with the rest of the Komi corpus, making them available for scientific use and ensuring the reproducibility of the research.
+
+select_by_time <- function(eaf_table, time_start = 547981, time_end = 578751){
+#        selection_start = lubridate::period_to_seconds(lubridate::hms(time_start)) * 1000
+#        selection_end = lubridate::period_to_seconds(lubridate::hms(time_end)) * 1000
+        eaf_table %>% distinct(Orth, Speaker, TS1_time, TS2_time)  %>% filter(Speaker == "VVF-F-1957") %>%
+                filter(TS1_time > time_start) %>% filter(TS1_time < time_end)
+}
+
+vvf_example <- FRelan::read_eaf("/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf", simplify = F)
+
+FRelan::read_tier("/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf", "phonet-ipaT", "VVF-F-1957") %>% 
+        select(Content, ref_id) %>%
+        rename(ipa = Content) -> ipa
+
+FRelan::read_tier("/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf", "ft-engT", "VVF-F-1957") %>% 
+        select(Content, ref_id) %>%
+        rename(ft_eng = Content) -> ft_eng
+
+ft_eng
+ipa
+
+vvf_example <- left_join(vvf_example, ipa, by = c("ref_RefID" = "ref_id")) %>% distinct(ref_RefID)
+vvf_example <- left_join(vvf_example, ft_eng, by = c("ref_OrthID" = "ref_id")) %>% 
+        select(Speaker, Orth, ft_eng, ipa, TS1_time, TS2_time)
+
+select_by_time(eaf_table = vvf_example, time_start = 547981, time_end = 578751) %>% select(ipa, Orth, ft_eng) %>%
+        knitr::kable()
+
+```
+
 
 ## Transcription system
 
