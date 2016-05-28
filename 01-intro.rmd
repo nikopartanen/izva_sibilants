@@ -24,14 +24,13 @@ FRelan::read_tier("/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva2011
         select(Content, ref_id) %>%
         rename(ft_eng = Content) -> ft_eng
 
-ft_eng
-ipa
-
 vvf_example <- left_join(vvf_example, ipa, by = c("ref_RefID" = "ref_id")) %>% distinct(ref_RefID)
 vvf_example <- left_join(vvf_example, ft_eng, by = c("ref_OrthID" = "ref_id")) %>% 
         select(Speaker, Orth, ft_eng, ipa, TS1_time, TS2_time)
 
-select_by_time(eaf_table = vvf_example, time_start = 547981, time_end = 578751) %>% select(ipa, Orth, ft_eng) %>%
+select_by_time(eaf_table = vvf_example, time_start = 547981, time_end = 578751) %>% select(ipa, ft_eng) %>%
+        rename(transcription = ipa) %>%
+        rename(translation = ft_eng) %>%
         knitr::kable()
 
 ```
