@@ -40,6 +40,8 @@ Russian and Komi have relatively similar phonological distinction between plain 
      счастье > [ˈɕːæsʲtʲjə] 
      -->
 
+The linguistic variable my investigation focuses into is this relatively simple alterations in the sibilant articulation. It is possible to analyze it as variation between two variants, although acoustically the phenomena is little bit more complicated as some pronunciations are kind of in-between. However, in the majority of cases it is relatively straightforward to assign one value or another.
+
 ## Research questions
 
 * Is the variation connected to language contact
