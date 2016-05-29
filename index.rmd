@@ -2,7 +2,7 @@
 title: "Russian influence on Iźva Komi sibilant articulation"
 author: "Niko Partanen"
 date: "`r Sys.Date()`"
-bibliography: [~/FRibliography/bibtex/FRibliography.bib, packages.bib]
+bibliography: [~/FRibliography/bibtex/FRibliography.bib, packages.bib, /Volumes/langdoc/compile_corpus/sessions.bib]
 knit: "bookdown::render_book"
 output:
   bookdown::gitbook:
