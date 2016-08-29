@@ -1,0 +1,375 @@
+---
+title: "Russian Influence in Iźva Komi Sibilant Articulation"
+author: "Niko Partanen"
+date: "25 August 2016"
+bibliography: [~/FRibliography/bibtex/FRibliography.bib, sessions.bib]
+output:
+    beamer_presentation:
+        latex_engine: xelatex
+        includes:
+            in_header: header.tex
+sansfont: Calibri Light
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plyr)
+library(dplyr)
+library(leaflet)
+library(rgdal)
+library(FRelan)
+source("expex.R")
+```
+
+## Introduction
+
+- My PhD studies are about variation in Komi dialects
+- Last three years I've been involved with compilation of different Komi corpora (Udora + Iźva)
+- Lots of research done on Komi dialectology, but access to digital + georeferenced data gives new possibilities
+- I work currently in INEL project in Hamburg University
+- I use in this study Iźva Komi corpus which will be archived in the end of 2016
+
+## Komi language -- Iźva dialect
+
+```{r, echo=F, warning=F, message=F, comment=F}
+
+url <- "https://raw.githubusercontent.com/nikopartanen/language_maps/master/geojson/kom.geojson"
+res <- readOGR(dsn = url, layer = "OGRGeoJSON", verbose = F)
+
+basemap <- leaflet() %>% setView(lng = 54.583, lat = 63.833, zoom = 4) %>% 
+        addProviderTiles("CartoDB.Positron") %>%
+        addPolygons(data = res, weight = 1, color = "#0000ff", fill = "#0000ff") %>% 
+        addPolygons(data = res[grepl("izva", res@data$dial), ], weight = 1, color = "red", fill = "red")
+
+basemap
+```
+
+## Epicenter of expansion -- Ižma village
+
+```{r, echo=F, warning=F, message=F, comment=F}
+icons <- iconList(home = makeIcon(iconUrl = "https://github.com/encharm/Font-Awesome-SVG-PNG/raw/master/black/png/128/home.png", 
+                                  iconWidth = 24, iconHeight = 24),
+                  lang_contact = makeIcon(iconUrl = "https://github.com/encharm/Font-Awesome-SVG-PNG/raw/master/black/png/128/commenting-o.png", 
+                                          iconWidth = 24, iconHeight = 24))
+homemap <- basemap %>% addMarkers(data = data_frame(lat = 65.009167, long = 53.916944), icon = icons$home)
+homemap
+```
+
+## Just a note -- Iźva is an offshoot of Upper-Vym dialect
+
+```{r, echo=F, warning=F, message=F, comment=F}
+homemap %>% addPolygons(data = res[ which(res@data$dial == "vym"), ], weight = 3, color = "black", fill = NA) 
+```
+
+## And this area was not Komi speaking before
+
+```{r}
+basemap %>% 
+        addPolygons(data = res[ which(res@data$dial == "izva" & res@data$desc != "izhma"), ], weight = 3, color = "black", fill = NA) # %>%
+#        addCircles(data = data_frame(lon = 50.99872, lat = 60.3454), radius = 65000)
+```
+
+
+### Background
+
+- Ižma itself populated from Upper Vym at the 16th century
+- Expansion since 19th century
+- Connected to the reindeer husbandry
+- Strong Russian and Nenets admixture
+- Local contacts with Saami, Khanty and Mansi
+
+### Iźva Within Komi
+
+- Shares developments with rest of Northern Komi Zyrian dialects
+- Especially the relation Upper Vym is very transparent
+- Mutually intelligible with all Komi varieties
+- Culturally and ethnically distinct Komi subgroup
+
+---
+
+![Lud festival](data/Lud-festival.jpg)
+
+## My data
+
+- Iźva Komi Documentation Project -- funded by Kone Foundation in 2014-2016.
+- Four fieldwork periods by now
+- Cooperation with local researchers
+- Semi-structured interviews, not much elicitation
+- Majority of the recordings in Komi, but also some in Russian
+- Attempts rough balance (roughly in following order)
+    - geographical regions
+    - age groups
+    - sex
+    - different genres and registers present
+- **I don't claim that the corpus is balanced!**
+
+##
+
+![Komi consonant inventory](figures/komi_consonants.png)
+
+## What about the sibilants?
+
+```{r, echo=F}
+
+FRelan::read_tier("/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf", "phonet-ipaT", "VVF-F-1957") %>% 
+        select(content, ref_id) %>%
+        rename(ipa = content) %>% select(-ref_id) -> ipa
+
+FRelan::read_tier("/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf", "ft-engT", "VVF-F-1957") %>% 
+        select(content, ref_id) %>%
+        rename(ft_eng = content) %>% select(-ref_id) -> ft_eng
+
+
+cbind(ipa, ft_eng) %>% select(ipa, ft_eng) %>% knitr::kable()
+```
+
+[@kpv_izva20111014VVF-1]
+
+- Many descriptions of Komi phonology leave it quite open what kind of sibilants Komi actually has
+- It is common to use some conventions to distinguish palatalized sʲ in Russian and its palatal or palato-alveolar counterpart in Komi
+- For example, ś ~ š', s' ~ s''
+- I personally would had transcribed these as sʲ and ɕ
+    + Would lead into marking Komi palatal affricates as cɕ and ɟʑ
+- In Uralic Phonetic Alphabet this is all simple as one marks just: t'ś and d'ź
+    + Although this just has the same ambivalency in regard to Russian counterparts
+    + Minute differences would be marked by throwing arrows around them
+- Of course one could pick any random characters to mark this distinction
+    + But this leads to problems if one has both languages present
+- This is actually what I do, since it isn't central for my argument what they are, mainly that they differ from Russian
+
+- The following examples illustrate the differences in Komi and Russian sibilants
+
+##
+
+![Example: vaɕilej](data/praat_MSF_vasilei_kpv.png)
+
+##
+
+![Example: vasʲilej](data/praat_MSF_vasilei_rus.png)
+
+## 
+
+Now I know some people like to transcribe these Komi sibilants, which probably could be more accurately described palato-alveolar or prepalatal, as **ç** and **ʝ**. 
+
+One argument for marking it with /ɕ/ would be that also Russian consonant phoneme /ɕ/, orthographically [щ], is regularly transcribed as /ɕ/. At least in the Russian of the Komi speakers these are regularly pronounced in very similar manner, and the bilingual speakers also tend to judge these as same sound.
+
+## Palatalation as areal feature
+
+- There are lots of features which vary inside Iźva speaking area
+    - level of deaffricatization
+    - **palato-alveolar sibilants pronounced as palatalized**
+    - reanalyzation of morphology (gəgərvonɨ ~ vonɨ gəgər)
+    - metathesis: ninem > nimen
+    - palatalized environment related vowel changes: ɕöd > sʲed
+    - Some sporadic (?) changes: medɕa > medja
+- This variation tends to get really messy when one takes a closer look
+
+- The phenomena I call here palatalization is the shift to more Russian-like pronunciation
+
+## Example of the phenomena in action
+
+`r gloss("no me rədiccɨ-l-i ɕolin sʲikt-ɨn.", "well I born-FREQ-1SG.PST Scholin village-INES", "Well, I was born in the Scholin (Щолин) village. [@kpv_izva20150406-3-a-002]")`
+
+`r gloss("pasʲkɨd-dʑɨk-a paɕkɨd-dʑɨk-a pasʲkɨd-dʑɨk-a", "wide-COMP-ADV wide-COMP-ADV wide-COMP-ADV", "Should I tell about my life **broader? Broader. Broader**, alright. [@kpv_izva20150411-1-b-008]")`
+
+## Several patterns
+
+- ɕ > sʲ in all environments: /sʲələm/, not /ɕölöm /
+- ɕ > sʲ before front vowels: /seɕɕa/ but /sʲir/
+- ɕ everywhere, sʲ only in Russian words: /pensʲija/
+- sʲ everywhere, ɕ only in Russian words: /vobɕe/
+
+As all speakers are bilingual, the both systems necessarily coexist.
+
+### Geographic distribution
+
+- At Kola Peninsula the first pattern
+- In Nenetsia the second pattern
+- Not enough data from Siberia, but something is going on
+
+Is this Russian influence?
+
+---
+
+- The fact that this pronunciation is not common on the areas where Iźva spread over non-Russian speaking areas could also be used to argue it is related to Russian indeed.
+- Some evidence suggest that similar phenomena would be going on also on other Komi dialect under more-than-ordinary Russian influence -- Upper-Sysola (this has been attested on few speakers in Užga vilalge) [@uotila1986a].
+
+## Fast comparison
+
+```{r reality_check , echo=F, warning=F, message=F, comment=F}
+data_frame(value = c("Russian phonemes", "more than usual Russian lexicon", "Palatalization of sibilants", "wovel change in pal. env."),
+           `Iźva` = c("f, x, ts", "TRUE", "TRUE", "ɕöd > sʲed"),
+           `Upper-Sysola` = c("f, x", "TRUE", "TRUE", "ɲaɲ > ɲeɲ, jaj > jej"))  %>% tibble::column_to_rownames("value") %>% knitr::kable()
+```
+
+- In Iźva palatalization seems to co-occur areally with extended deaffricatization.
+- For history of deaffricatization in Iźva, compare to Upper-Vym [@batalova1982RU, 53], but [@redei1978a] and [@kpv_vym19570000-290_3a-Soska]).
+
+## Adaptation of Russian elements
+
+- There has been contact between Komi and Russian since 12th century [@leinonen2006b, 235]
+- Russian loans also are similarly layered
+    + Old dialectal loans: челядь 'children'
+    + Relatively new loans, but well adapted to Komi
+    + Of course lots of loans are just passing through Russian, cf. /interesnəj/ (compare [@kalima1910a])
+- Relative similarity between Komi and Russian phonologies
+
+- Compare rus. respublika, kpv. respublika, sah. öröspüübülüke [@ferguson2016a, 146]
+- Lots of linguistic resources bivalent [@woolard1998a, 7], but here the devices to enforce distinctions are very subtle
+- Compare: kpv. /ɕemja/, rus. /sʲemʲja/, orthographically [семъя] ]and [семья]
+
+
+##
+
+- Our corpus tries, probably failingly but with honest attempt, to capture something about the multilinguality of these speech communities.
+- If someone speaks only Russian we still carry on the recording to the end, as there is often wealth of information about the linguistic situation in the community, among other things
+
+## Different languages -- Komi
+
+- Drawing line between languages probably not fruitful
+- However, I've indicated to the corpus when someone is speaking only Russian in order to distinguish that in the searches
+
+`r gloss("muʒik-ɨs pəgibnit-is sɨ-lɨ lokt-is izveɕenʲ:e poxoronka", "man-3SG die-3SG.PST she-3SG.DAT arrive-3SG.PST notice funeral", "Her husband died, she received a letter (from the front).")`
+
+`r gloss("tak vot kər kak tseloveka vedʲ", "FOC FOC reindeer Q human FOC", "Well the reindeer is like a human, right.")`
+
+`r gloss('и ныа тулыс-эдз обычнэ мыйке , благовешеннеас вед седьмого апреля , да ?', 'and they spring-TERM' usually something PUNCT Annunciation FOC seven.GEN April.GEN PUNCT yes PUNCT', 'And usually by the summer they (do) something, the Annunciation is seventh of April, right?')`
+
+## Data use
+
+```{r, echo=F}
+kpv <- readr::read_rds("/Volumes/langdoc/langs/kpv/kpv_izva_corpus.rds")
+threshold <- 1300
+kpv %>% filter(attr_foreign != T) %>% 
+        filter(aligned == TRUE) %>%
+        filter(rating > 0) %>%
+        count(participant) %>%
+#        filter(n > threshold) %>%
+        .$participant -> top_participants
+
+kpv %>% filter(participant %in% top_participants) -> kpv_selection
+
+```
+
+- Subset selected by few criteria
+    - Has to be time-aligned
+    - Audio quality has to be sufficient
+    - The amount of tokens per speaker has to be substantial
+
+In the corpus there are currently `r length(kpv_selection %>% distinct(participant))` speakers who fill the criteria needed. I have sampled their speech,  in hope of getting enough occurrences of different loantypes to get some meaningful results. Besides I selected three speakers from different geographic locations to get more detailed view of what is going on.
+
+##
+
+```{r, echo=F}
+# kpv_selection %>% distinct(participant, lon_birth, lat_birth, session_name) %>% filter(is.na(lon_birth))
+# kpv_selection %>% filter(participant == "MSF-F-1968") %>% distinct(participant, lon_por, lat_por, session_name) %>% slice(20:22)
+basemap %>% addCircleMarkers(data = kpv %>% 
+                                     tidyr::drop_na(lon_birth) %>% 
+                                     filter(attr_foreign != T) %>% 
+                                     filter(aligned == TRUE), 
+                             lng = ~lon_birth, lat = ~lat_birth, radius = 2)
+```
+
+## Data sampling
+
+```{r, echo=F}
+
+# add_gloss <- function(phrase, tokens, gloss, translation, citation){
+#         
+#         shiny::HTML(paste0('
+# <link rel="stylesheet" href="libs/leipzig.css">
+#         <div data-gloss style="border-top:1px solid; border-bottom:1px solid;">
+#                 <p>', phrase,'</p>
+#                 <p>', tokens,'</p>
+#                 <p>', gloss,'</p>
+#                 <p>', translation, '</p>
+#                 <!-- JavaScript -->
+#         </div>
+#         <script src="libs/leipzig.js"></script>
+#         <script>
+#                 document.addEventListener(\'DOMContentLoaded\', function() {
+#                 Leipzig({ firstLineOrig: true }).gloss();
+#         });
+# </script>'))
+# }
+# 
+# close_gloss_context <- function(){
+#         shiny::HTML('<script src="libs/leipzig.min.js"></script>
+#                 <script>
+#                 document.addEventListener(\'DOMContentLoaded\', function() {
+#                 Leipzig({ firstLineOrig: true }).gloss();
+#         });</script>')
+# }
+
+
+# kpv %>% filter(aligned == TRUE)
+# # kpv_selection %>% distinct(participant, lon_birth, lat_birth, session_name) %>% filter(is.na(lon_birth))
+# # kpv_selection %>% filter(participant == "MSF-F-1968") %>% distinct(participant, lon_por, lat_por, session_name) %>% slice(20:22)
+# basemap %>% addCircleMarkers(data = kpv %>%
+#                                      tidyr::drop_na(lon_birth) %>%
+#                                      filter(attr_foreign != T) %>%
+#                                      filter(aligned == TRUE),
+#                              lng = ~lon_birth, lat = ~lat_birth, radius = 2)
+# etymons <- readr::read_csv("analysis/etymons.csv")
+# 
+# current_sample <- kpv_selection %>% distinct(token) %>% .$token
+# current_count <- kpv_selection %>% count(token)
+# 
+# etymons %>% distinct(token, .keep_all = T) %>% filter(token %in% current_sample) -> current_etymons
+# left_join(current_etymons, current_count %>% rename(new_count = n)) %>% readr::write_csv("analysis/etymons_27082016.csv")
+# kpv_selection %>% find_token("бензина")
+# 
+
+
+# etymons %>% 
+#         filter(position == "stem") %>% 
+#         filter(lang == "rus") %>% 
+#         filter(comment != "name") %>% .$token
+# 
+# etymons %>% filter(lang == "rus") %>%
+#         filter(position == "stem") %>% 
+#         filter(suffix_lang == "kpv") %>% 
+#         filter(comment != "name") %>% .$token
+# 
+# # kpv %>% find_token("тридцативосьмиквартирнэй") %>% open_eaf()
+# 
+# kpv %>% filter(token %in% tokens_to_match)
+# 
+# set.seed(gsub("[a-z]", "", "8baf9077"))
+# # kpv %>% filter(aligned == TRUE) %>% filter(attr_foreign != T) %>% filter(actor_role != "Interviewer") %>% find_token("щ") %>% sample_n(100)  %>% open_eaf(4)
+# 
+# kpv %>% filter(aligned == TRUE) %>% filter(attr_foreign != T) %>% filter(actor_role != "Interviewer") %>% find_token("щ") %>% sample_n(100) 
+# 
+# kpv %>% filter(aligned == TRUE) %>% filter(attr_foreign != T) 
+# 
+# kpv_selection %>% find_token("интересуешься") %>% select(session_name, before, token, after)
+# 
+# # kpv_izva20150407-2-b lots of Russian here
+
+```
+
+## Testing
+
+- Some cases more bivalent than others, especially nominatives
+- However, as both languages have quite rich morphology, one often has to make further decisions
+- I was interested about whether there is a salient difference in phonological adaptation between cases like: восьмого ~ восьмойын, or газет ~ газетсьыс ~ газеты, or посёлку ~ посёлокас, or российская ~ россияса, or северные ~ севернӧй
+- Sampling different types and looking into them more closely
+    + Not that simple with corpus that's still under construction!
+- Sample has been pre-filtered by few conditions
+    + No only Russian texts
+    + No tokens from foreign researchers (me, Michael Rießler and Rogier Blokland)
+    + No tokens from data which has no audio alignment
+    + No tokens from direct linguistic elicititation
+    + No Saami or Nenets
+ - Apparently this kind of selection is ok when reasoned well enough [@johnson2008a]
+
+## References {.allowframebreaks}
+
+```{r}
+# To do:
+# - cite R packages
+# - add inline-citations to the recordings
+# naprimerysɕ
+```
+
