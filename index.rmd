@@ -1,5 +1,5 @@
 --- 
-title: "Russian influence on Iźva Komi sibilant articulation"
+title: "Russian influence on Iźva Komi phonology"
 author: "Niko Partanen"
 date: "`r Sys.Date()`"
 bibliography: [~/langtech/art/FReiburg/bibtex/FRibliography.bib, packages.bib]
