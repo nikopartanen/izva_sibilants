@@ -22,7 +22,7 @@ However, generally speaking one could say that small endangered languages are ki
 
 ## Methodological implementation
 
-Methodology always has two aspects -- scientific and technical. Milroy and Gordon pose the following question [@milroyEtAl2003a, 136]:
+Milroy and Gordon pose the following question [@milroyEtAl2003a, 136]:
 
 > How did the investigators proceed from having hours of tape-recorded speech to reporting the numbers in the tables?
 
