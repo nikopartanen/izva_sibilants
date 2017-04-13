@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="analysis.html">
-<link rel="next" href="technical-documentation.html">
+<link rel="prev" href="theory-and-method.html">
+<link rel="next" href="conclusions.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -163,49 +163,89 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conclusions" class="section level1">
-<h1><span class="header-section-number">Section 5</span> Conclusions</h1>
-<p>With many earlier studies it has been taken as granted that Iźva dialect of Komi Zyrian would have palatalized sibilants as a characteristic feature of this dialect, see for example <span class="citation">(J. Igušev <a href="#ref-igusev1972aTR">1972</a>)</span>, or their status is left uncovered but explicitly shows as same as in Standard Komi <span class="citation">(Сахарова <a href="#ref-saxarovaEtAl1976a">1976</a>)</span>. My study clearly challenges this view and proposes that in principle Iźva Komi has identical system of sibilants as there is in the Standard Komi, but some subvarieties of Iźva Komi differ from this. It is important to notice, that in the wider ethno-historical context it is necessary to view the palatalal sibilants as the primary and earlier feature of Iźva Komi, and the forms found in different subdialects as a later innovation.</p>
-<p>The source of palatalized manner of articulation is most likely contact with Russian. However, placing these developments into their complete contexts is a more difficult undertaking. It has been described in earlier studies how the Russian dialects in Ust’-Tsilma area have been in mutual influence with Iźva Komi for several centuries, and this has to be taken into account somehow, especially when palatalization in itself seems to be typical for those Iźva varieties spoken way outside this contact sphere. Since it occurs in both extremes of Iźva territory: Kola Peninsula and Siberia, one must conclude that the most likely point of origin is somewhere in Mala- and Bol’šemel’skaya Tundra.</p>
-<div id="stable-variation-or-change-in-progress" class="section level2">
-<h2><span class="header-section-number">5.1</span> Stable variation or change in progress</h2>
-</div>
-<div id="variation-of-variable" class="section level2">
-<h2><span class="header-section-number">5.2</span> Variation of variable</h2>
-</div>
-<div id="comparable-case-studies" class="section level2">
-<h2><span class="header-section-number">5.3</span> Comparable case studies</h2>
-<p>This section is just for personal notes. One should collect a good list of similar case studies so that it would be easier to imitate their methodology and style.</p>
-<div id="final-sibilant-deletion-in-brazilian-portuguese" class="section level3">
-<h3><span class="header-section-number">5.3.1</span> Final sibilant deletion in Brazilian Portuguese</h3>
-<p>This is reported i.e. in <span class="citation">(Bayley and Lucas <a href="#ref-bayleyEtAl2007a">2007</a>, 8)</span>.</p>
-</div>
-<div id="salvadoran-spanish--s-deletion-and-aspiration" class="section level3">
-<h3><span class="header-section-number">5.3.2</span> Salvadoran Spanish -s deletion and aspiration</h3>
-<p>Some Hoffman has been studying this quite a bit.</p>
+<div id="analysis" class="section level1">
+<h1><span class="header-section-number">Section 4</span> Analysis</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(FRelan)
+<span class="kw">library</span>(plyr)
+<span class="kw">library</span>(dplyr)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:plyr&#39;:
+## 
+##     arrange, count, desc, failwith, id, mutate, rename, summarise,
+##     summarize</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(xml2)
+<span class="kw">library</span>(readr)
 
-</div>
-</div>
-</div>
-<h3> References</h3>
-<div id="refs" class="references">
-<div id="ref-igusev1972aTR">
-<p>Igušev, Je.A. 1972. “Russkie Zaimstvovanija v Ižemskom Dialekte Komi Jazyka. Dissertacija Na Soiskanie U‘enoj Stepeni Kandidata Filologi’eskih Nauk.” PhD thesis, Syktyvkar: Komi filial AN SSSR.</p>
-</div>
-<div id="ref-saxarovaEtAl1976a">
-<p>Сахарова, Н.Н., М.А. AND Сельков. 1976. <em>Ижемский диалект коми языка</em>. Сыктывкар.</p>
-</div>
-<div id="ref-bayleyEtAl2007a">
-<p>Bayley, Robert, and Ceil Lucas, eds. 2007. <em>Sociolinguistic Variation. Theories, Methods, Applications.</em> Cambridge University Press.</p>
-</div>
+<span class="kw">read_rds</span>(<span class="st">&quot;~/langdoc/kpv/kpv_izva_corpus.rds&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">grepl</span>(<span class="st">&quot;kpv_izva&quot;</span>, session_name)) <span class="op">%&gt;%</span>
+<span class="st">        </span><span class="kw">mutate</span>(<span class="dt">year =</span> <span class="kw">gsub</span>(<span class="st">&quot;kpv_izva(</span><span class="ch">\\</span><span class="st">d{4}).+&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, session_name)) <span class="op">%&gt;%</span>
+<span class="st">        </span><span class="kw">filter</span>(<span class="op">!</span><span class="st"> </span>year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1950</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">        </span><span class="kw">filter</span>(<span class="op">!</span><span class="st"> </span>year <span class="op">==</span><span class="st"> </span><span class="dv">1968</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">        </span><span class="kw">filter</span>(<span class="op">!</span><span class="st"> </span>year <span class="op">==</span><span class="st"> </span><span class="dv">1972</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">        </span><span class="kw">filter</span>(<span class="op">!</span><span class="st"> </span><span class="kw">grepl</span>(<span class="st">&quot;00VKn</span><span class="ch">\\</span><span class="st">d&quot;</span>, session_name)) -&gt;<span class="st"> </span>izva
+<span class="co"># izva %&gt;% find_token(&quot;(зь|зё|зя|зю|зи|зе|сь|сё|ся|сю|си|се|Зь|Зё|Зя|Зю|Зи|Зе|Сь|Сё|Ся|Сю|Си|Се)&quot;) %&gt;% count(token) %&gt;% arrange(token) %&gt;% readr::write_csv(&quot;analysis/etymons.csv&quot;)</span>
+
+<span class="co"># ```{r}</span>
+<span class="co"># print(system(&quot;git rev-parse --short HEAD&quot;, intern = TRUE))</span>
+<span class="co"># ```</span>
+<span class="co">#</span>
+<span class="co">#</span>
+
+<span class="co"># read_csv(&quot;analysis/etymons.csv&quot;) %&gt;% distinct(X7)</span>
+<span class="co"># </span>
+<span class="co"># izva %&gt;% find_token(&quot;(зь|зё|зя|зю|зи|зе|сь|сё|ся|сю|си|се|Зь|Зё|Зя|Зю|Зи|Зе|Сь|Сё|Ся|Сю|Си|Се)&quot;) -&gt; sibs_all</span>
+<span class="co"># </span>
+<span class="co"># sibs_all %&gt;% count(participant, session_name, year) %&gt;% arrange(desc(n)) %&gt;% View</span>
+<span class="co"># </span>
+<span class="co"># izva %&gt;% find_token(&quot;щ&quot;) %&gt;% count(token) %&gt;% arrange(desc(n))</span>
+<span class="co"># </span>
+<span class="co"># izva %&gt;% find_token(&quot;спасибо!&quot;) %&gt;% open_eaf(1)</span>
+
+<span class="co"># Compare how Igushev pronounces in new and old texts items like несьчассе</span>
+<span class="co"># Things to look independently</span>
+<span class="co"># - Proper nouns</span>
+<span class="co"># - Numerals^</span>
+<span class="co"># </span>
+<span class="co"># Good example:</span>
+<span class="co"># поселениеяссьыс</span>
+<span class="co"># предпенсионнэесь</span>
+<span class="co"># программируйт-лӧсьӧд</span>
+<span class="co"># психологию ~ психолигияыс</span>
+<span class="co"># рӧбитысьяс - in kpv deriv &gt; highly integrated</span>
+<span class="co"># сбитӧны-сёрнитэны</span>
+<span class="co"># кӧзяин ~ хозяин ~ сельскохозяйственный</span>
+
+<span class="co"># We will throw this to HFST with some really fast and dirty trick</span>
+
+<span class="co"># readr::write_delim(izva %&gt;% select(word), path = &quot;hfst/tokens&quot;, col_names = F)</span>
+
+<span class="co"># cat tokens | hfst-lookup -q ~/GT/main/langs/kpv/src/analyser-gt-desc.hfstol | head -n1 | cut -f 3 &gt; tokens_rus</span>
+<span class="co"># cat tokens | hfst-lookup -q --max-number=1  ~/GT/main/langs/rus/src/analyser-gt-desc.hfstol | grep -v &quot;^$&quot; &gt; tokens_rus</span></code></pre></div>
+<p>Total mixture of Standard Komi and Iźva – but that is what these speech communities are!!!</p>
+<p>There are several other linguistic features which seem to co-occur with palatalization. These are at least:</p>
+<ul>
+<li>Deaffricatization (close to complete)</li>
+<li>Preference in 3PL verb forms with s-elements (muninɨ ~ munisnɨ ~ muninɨs ~ <strong>munisnɨs</strong>)</li>
+</ul>
+<p>Still no clear what individual factors are behind the variation!</p>
+<p>Question is quite complicated as there are several distinct topics to consider. Among these are the positions of sibilants in the word. If can make a difference whether the sibilant is in the stem or Komi suffix.</p>
+<p>There is also the question of Russian elements as code switching, or as ad-hoc borrowings, or as old already opaque borrowings. In this treatment I have considered the opaque dialectal borrowings to be part of native Komi lexicon, although the boundaries are not always that simple to draw.</p>
+<p>What goes on with high frequency Russian items such as numerals? How about very frequent elements like “всё”? Would “друзьях” be in all instances pronounced in entirely Russian manner, compared to possibly more nativized “друзьяяс”? There are also cases like “зависит” and “зависитӧ”, where one has same stem but within Russian morphology as “зав исить-pres.3sg” and in Komi “зависитны-pres.3sg”. Or “занимаются” and “занимайтчемаась”. And what is <em>кальмозере</em>? кӧзяйка?</p>
+<p>There are also multiple cases where the same speakers pronounce Russian sibilant “щ”. What is going on with that?</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="technical-documentation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="theory-and-method.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
