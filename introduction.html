@@ -171,26 +171,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>This leads into a situation where individual variation can often be pin pointed into personal backgrounds. For example, someone may have lived long time on another region or someone’s parents may have moved from elsewhere. These trajectories contribute on different ways to the ways how people speak. There are several good examples in current Komi corpus. For example, one speaker from <a href="link%20here">Vizinga region</a> did most of his working career in <a href="link%20here">Ižma region</a>, and his speech is wonderful fusion of <a href="link%20here">Central Sysola morphology</a> with Iźva lexicon and syntactic pecularities. One could think speakers like him as exceptions, but in reality it must have been always the norm that mobility like this has always been present in the community.</p>
 <p>This study in hand is not yet entirely finished, and as it is first of the attempts to study sociolinguistic variation in Komi dialects, it could also be considered as a pilot study of a sort. Thereby all comments about methodology and possible different approaches would be most welcome.</p>
 <p>I start this study with citation from one of the conversations which initially pointed me that this phenomena exists. One of my Komi teachers in Syktyvkar, folklorist Valentina Viktorovna, once recalled after day’s lectures how she had encountered different patterns of pronunciation, in this case in Siberia.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># select_by_time &lt;- function(eaf_table, time_start = 547981, time_end = 578751){</span>
-<span class="co"># #        selection_start = lubridate::period_to_seconds(lubridate::hms(time_start)) * 1000</span>
-<span class="co"># #        selection_end = lubridate::period_to_seconds(lubridate::hms(time_end)) * 1000</span>
-<span class="co">#         eaf_table %&gt;% distinct(Orth, Speaker, TS1_time, TS2_time)  %&gt;% filter(Speaker == &quot;VVF-F-1957&quot;) %&gt;%</span>
-<span class="co">#                 filter(TS1_time &gt; time_start) %&gt;% filter(TS1_time &lt; time_end)</span>
-<span class="co"># }</span>
-
-<span class="st">`</span><span class="dt">%&gt;%</span><span class="st">`</span> &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="st">`</span><span class="dt">%&gt;%</span><span class="st">`</span>
-
-vvf_example &lt;-<span class="st"> </span>FRelan<span class="op">::</span><span class="kw">read_eaf</span>(<span class="st">&quot;/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf&quot;</span>)
-
-FRelan<span class="op">::</span><span class="kw">read_tier</span>(<span class="st">&quot;/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf&quot;</span>, <span class="st">&quot;phonet-ipaT&quot;</span>, <span class="st">&quot;VVF-F-1957&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">        </span>dplyr<span class="op">::</span><span class="kw">select</span>(content, ref_id) <span class="op">%&gt;%</span>
-<span class="st">        </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">ipa =</span> content) -&gt;<span class="st"> </span>ipa
-
-FRelan<span class="op">::</span><span class="kw">read_tier</span>(<span class="st">&quot;/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf&quot;</span>, <span class="st">&quot;ft-engT&quot;</span>, <span class="st">&quot;VVF-F-1957&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">        </span>dplyr<span class="op">::</span><span class="kw">select</span>(content, ref_id) <span class="op">%&gt;%</span>
-<span class="st">        </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">ft_eng =</span> content) -&gt;<span class="st"> </span>ft_eng
-
-dplyr<span class="op">::</span><span class="kw">bind_cols</span>(ipa <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(ipa), ft_eng) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(ipa, ft_eng) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -229,10 +209,6 @@ dplyr<span class="op">::</span><span class="kw">bind_cols</span>(ipa <span class
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># select_by_time(eaf_table = vvf_example, time_start = 547981, time_end = 578751) %&gt;% select(ipa, ft_eng) %&gt;%</span>
-<span class="co">#         rename(transcription = ipa) %&gt;%</span>
-<span class="co">#         rename(translation = ft_eng) %&gt;%</span>
-<span class="co">#         knitr::kable()</span></code></pre></div>
 <p><span class="citation">(<span class="citeproc-not-found" data-reference-id="kpv_izva20111014VVF-1"><strong>???</strong></span>)</span></p>
 <p>It is noteworthy that pronunciations such as [sʲələm] this pronounciation i completetely strange and they want me to write something sodo occur on different speakers, but the most common environment is that where a speaker imitates how the Komi on other regions speak. In most of the examples it is somehow discussed with the deaffricatization on those areas. Generally speaking when I’ve been discussing this phenomena with different speakers the results have been quite mixed. Some are conscious about this variation, but the most apparently are not, and as said very often it is associated somehow vaguely with deaffricatization as an areal feature, contributing together with that to general perception of “softness” of the periferic Iźva varieties.</p>
 <p>This kind of pronunciation is indeed present on some speakers of Komi. One encounters it on peripheric regions where Iźva Komi is spoken, however, not all speakers exhibit it. Moreover some speakers have similar pronunciation also elsewhere. Among different areas one where I have encountered it often is Upper-Sysola – dialectologically very different corner from Iźva. However, that is also a region where the contact with Russian has been long, so one could think that this development is connected to Russian contact.</p>
