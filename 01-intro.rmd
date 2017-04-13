@@ -2,40 +2,83 @@
 
 <!-- <center><iframe width="100%" height="500" src="abstract.pdf"></iframe></center> -->
 
-I start this study with citation from one of the conversations which initially pointed me that this phenomena exists and there is some potential for further research. One of my Komi teachers in Syktyvkar, folklorist Valentina Viktorovna, once recalled after days lectures how she had encountered different patterns of pronunciation, in this case in Siberia.
+The sociolinguistic variation in Uralic languages like Komi is largely uninvestigated, so there are many different phenomena one should look into. Large degree of variation found in contemporary spoken Komi has a clear areal origin -- different dialectal features are present although they fuse with more standard features, and are more salient in some registers and speech events than in the others. In contemporary Russia we often find speech communities which are quite different from those one would assume on traditionally described homogenous dialect areas. The mobility during Soviet times has been relatively high, and in areas like Komi the state enforced relocations have often resulted in Komi speakers being shuffled from one community to another, mixing dialects as this happens. On the other hand, standard language has had some influence to local varieties as well, although less so with areas outside Komi Republic [@cypanov2009a].
 
-```{r, echo=F}
+At the same time one should not underestimate the mobility of speakers in earlier times, as there is ample evidence from large migrations and regular resettlements all over Komi area. Probably the traditional dialect areas never were as neat as they plot over on a map. Also seeing the dialect areas in their exact geographical context in relation to roads and trade connections could give some insight 
+
+This leads into a situation where individual variation can often be pin pointed into personal backgrounds. For example, someone may have lived long time on another region or someone's parents may have moved from elsewhere. These trajectories contribute on different ways to the ways how people speak. There are several good examples in current Komi corpus. For example, one speaker from [Vizinga region](link here) did most of his working career in [Ižma region](link here), and his speech is wonderful fusion of [Central Sysola morphology](link here) with Iźva lexicon and syntactic pecularities. One could think speakers like him as exceptions, but in reality it must have been always the norm that mobility like this has always been present in the community. 
+
+This study in hand is not yet entirely finished, and as it is first of the attempts to study sociolinguistic variation in Komi dialects, it could also be considered as a pilot study of a sort. Thereby all comments about methodology and possible different approaches would be most welcome. 
+
+I start this study with citation from one of the conversations which initially pointed me that this phenomena exists. One of my Komi teachers in Syktyvkar, folklorist Valentina Viktorovna, once recalled after day's lectures how she had encountered different patterns of pronunciation, in this case in Siberia.
+
+```{r, echo=F, eval=T}
 
 
-select_by_time <- function(eaf_table, time_start = 547981, time_end = 578751){
-#        selection_start = lubridate::period_to_seconds(lubridate::hms(time_start)) * 1000
-#        selection_end = lubridate::period_to_seconds(lubridate::hms(time_end)) * 1000
-        eaf_table %>% distinct(Orth, Speaker, TS1_time, TS2_time)  %>% filter(Speaker == "VVF-F-1957") %>%
-                filter(TS1_time > time_start) %>% filter(TS1_time < time_end)
-}
+# select_by_time <- function(eaf_table, time_start = 547981, time_end = 578751){
+# #        selection_start = lubridate::period_to_seconds(lubridate::hms(time_start)) * 1000
+# #        selection_end = lubridate::period_to_seconds(lubridate::hms(time_end)) * 1000
+#         eaf_table %>% distinct(Orth, Speaker, TS1_time, TS2_time)  %>% filter(Speaker == "VVF-F-1957") %>%
+#                 filter(TS1_time > time_start) %>% filter(TS1_time < time_end)
+# }
 
-vvf_example <- FRelan::read_eaf("/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf", simplify = F)
+`%>%` <- dplyr::`%>%`
+
+vvf_example <- FRelan::read_eaf("/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf")
 
 FRelan::read_tier("/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf", "phonet-ipaT", "VVF-F-1957") %>% 
-        select(Content, ref_id) %>%
-        rename(ipa = Content) -> ipa
+        dplyr::select(content, ref_id) %>%
+        dplyr::rename(ipa = content) -> ipa
 
 FRelan::read_tier("/Volumes/langdoc/langs/kpv/kpv_izva20111014VVF-1/kpv_izva20111014VVF-1.eaf", "ft-engT", "VVF-F-1957") %>% 
-        select(Content, ref_id) %>%
-        rename(ft_eng = Content) -> ft_eng
+        dplyr::select(content, ref_id) %>%
+        dplyr::rename(ft_eng = content) -> ft_eng
 
-vvf_example <- left_join(vvf_example, ipa, by = c("ref_RefID" = "ref_id")) %>% distinct(ref_RefID)
-vvf_example <- left_join(vvf_example, ft_eng, by = c("ref_OrthID" = "ref_id")) %>% 
-        select(Speaker, Orth, ft_eng, ipa, TS1_time, TS2_time)
+dplyr::bind_cols(ipa %>% dplyr::select(ipa), ft_eng) %>% dplyr::select(ipa, ft_eng) %>% knitr::kable()
 
-select_by_time(eaf_table = vvf_example, time_start = 547981, time_end = 578751) %>% select(ipa, ft_eng) %>%
-        rename(transcription = ipa) %>%
-        rename(translation = ft_eng) %>%
-        knitr::kable()
+# select_by_time(eaf_table = vvf_example, time_start = 547981, time_end = 578751) %>% select(ipa, ft_eng) %>%
+#         rename(transcription = ipa) %>%
+#         rename(translation = ft_eng) %>%
+#         knitr::kable()
 
 ```
 
 [@kpv_izva20111014VVF-1]
+
+It is noteworthy that pronunciations such as [sʲələm] this  pronounciation occurs on different speakers, but the most common environment is that where a speaker imitates how the Komi on other regions speak. In most of the examples it is somehow discussed with the deaffricatization on those areas. Generally speaking when I've been discussing this phenomena with different speakers the results have been quite mixed. Some are conscious about this variation, but the most apparently are not, and as said very often it is associated somehow vaguely with deaffricatization as an areal feature, contributing together with that to general perception of "softness" of the periferic Iźva varieties.
+
+This kind of pronunciation is indeed present on some speakers of Komi. One encounters it on peripheric regions where Iźva Komi is spoken, however, not all speakers exhibit it. Moreover some speakers have similar pronunciation also elsewhere. Among different areas one where I have encountered it often is Upper-Sysola -- dialectologically very different corner from Iźva. However, that is also a region where the contact with Russian has been long, so one could think that this development is connected to Russian contact. Same can be said about the Inva region of Komi-Permyak, where similar phenomena has been reported.
+
+Yet another environment where this kind of pronunciation seems to occur is with the speakers who have not acquired Komi perfectly as children, and whose main language is Russian. However, this case is still wholly different from what I discuss here most of the time, since imperfect language acquisition does not seem to be involved that often with the changes on communal level.
+
+Even among the speakers who normally in their Komi never exhibit Russian-like palatalized pronunciation in their Komi this of course surfaces in their Russian. And the line between Komi and Russian is very blurry and easily crossed. We have been working recently with Boglarka Janurik to establish some conventions to tag mixed morphology and code-switching in Erzya and Komi, and hopefully the current study can be somehow combined into this.
+
+It seems, after discussing this with many Komi speakers, that this pronunciation as such is not strongly noticed by the speakers themselves, and often when I try to ask about it I encounter just bewilderment. So in this sense it doesn't look like a feature that would likely be strongly sociolinguistically marked. However, the way how it directly associates with Russian pronunciation still makes it interesting.
+
+## Background
+
+I started to study Komi roughly six years ago. During these years I was living in Syktyvkar for five months and have later been involved with around eight fieldtrips in different regions where Komi is spoken. I've worked with Komi both in urban and rural areas, and although my later work has been conducted mainly on the countryside, I think the processes taking place among urban Komi are also very much in need of investigations. Also these categorizations are often somewhat vague, as many villages are close to the cities and people tend to have complex backgrounds. 
+
+I remember spendings lots of time with Komi speakers at the University and at different cultural institutions. Although Russian loanwords are used everywhere, I was even surprised by the stark contrast many speakers exhibited when speaking at their workplace in contrast to the way how they spoke, for example, when having a drink with the friends. Naturally there is nothing surprising in this fact, native speakers employ different registers in different settings, but I started to get impression that the way Russian terms are used and adapted is somehow closely connected to the way how different registers work.
+
+## Multilinguality as a resource
+
+If we think about the the principal goal of the language documentation, which Himmelmann pronounced as:
+
+> to provide a comprehensive record of the linguistic practices characteristic of a given speech community.
+
+Then it is quite obvious that if the language community is multilingual, then also the linguistic practices in it are necessarily multilingual, and it logically follows that monolingual corpus cannot describe adequately these linguistic practices. It may be adequate in order to describe the grammatical system of a given language, but these linguistic practices we are supposedly after must be something quite different.
+
+I'm not saying that we would be doing perfect job in this either. Our Komi corpus is primarily in Komi Zyrian dialects. However, there are very large amounts of Russian within it. And also small fragments of other languages. Currently the corpus contains material in:
+
+- Komi
+- Russian
+- Tundra Nenets
+- Mansi
+- Kildin Saami
+- Finnish
+
+Some of these are truly fragmentary, for example, some Komi speakers who know Finnish have uttered few sentences to clarify some point for me. In Nenets we have few poems, in Mansi one song. One could say that this is next to nothing, and truly, these may not always be enough to get very comprehensive results (besides with Komi and Russian which both are plentiful), but ideally the Nenets, Saami, Khanty and Mansi portions of the corpus would grow so that the multilingualism within these languages could also be better investigated.
 
 ## Transcription system
 
@@ -48,6 +91,13 @@ Could represent either phones
 > sʲ or ɕ
 
 There are very few languages in which these variants would be phonemically distinct. Naturally one can always come up with ad-hoc conventions to mark these differences, but this again feeds to the problem I described above: lack of comparability between transcripts.
+
+Now some words are needed about the palatal sibilant in Komi. There are cases where it is described as [ç](http://phoible.org/inventories/view/426) or something else.
+
+
+In Iźva Komi Documentation Project we have employed a transcription system which is close to Komi orthography. For dialectal phonological deviations the conventions chosen are similar to those in recent Komi dialect dictionary. The convention is great for morphological and syntactic work, but there are several difficulties with phonological studies. As has been pointed out, more narrow transcriptions helps greatly while identifying how the variation is connected to different phonetic environments. However, this may contain much information that is not needed on the later research. [@milroyEtAl2003a, 143]. Actually it could be a very good convention if language documentation corpora would contain a small carefully selected subset of very narrowly transcribed recordings.
+
+The approach selected here has been to use the current transcription system to identify locations where the sibilants under investigation occur, and those tokens are transcribed narrowly in IPA. Especially in the earlier phases Praat has been used to evaluate the variables in different environments, but the majority of annotations have been done based on auditory judgment. As this is easily highly biased, the transcriptions were later evaluated by another highly proficient listener. To add transcparency, the time aligned and transcribed tokens can also be listened online. As always, feedback is most welcome. I have used an R function to transform orthographic transcription into rudimentary IPA, which has been re-evaluated while the tokens containing sibilants have been time-aligned.
 
 ### Transcription system used in this study {#transcription-system}
 
@@ -96,5 +146,4 @@ In my case the most important subcorpora have been the Nenets Autonomous Okrug s
 
 * Lack of data from Russian dialects
 * What are the limitations of language documentation corpora
-* Can TV broadcast data be used to phonetic analysis?
 * How to differentiate Russian loanwords from already native elements (for example, very old opaque loanwords)

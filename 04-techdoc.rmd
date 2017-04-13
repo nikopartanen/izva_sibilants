@@ -43,6 +43,53 @@ sle2016partanen::transliterate
 sle2016partanen::sib_tier_cyr2ipa
 ```
 
+## Nice spectrograms
+
+```{r}
+# library(plyr)
+# library(dplyr)
+# library(animation)
+# library(png)
+# library(raster)
+# library(ggplot2)
+# library(grid)
+# 
+# #Replace the directory and file information with your info
+# img <- readPNG("data/praat_MSF_vasilei_kpv.png")
+# 
+# library(tuneR)
+# sound <- readWave("data/praat_MSF_vasilei_kpv/praat_MSF_vasilei_kpv.wav") 
+# sound_length <- length(sound@left) / sound@samp.rate
+# 
+# needed_frames <- sound_length / 0.005
+# needed_frames <- sound_length * 50
+# 
+# 
+# 
+# library(stringr)
+# intervals <- round(seq(from = 89, to =  812, length.out = needed_frames))
+# interval_info <- data_frame(interval = intervals,
+#            name = str_pad(1:length(intervals), width = 3, pad = "0"))
+# 
+# # sapply(intervals[1:2], function(x){
+# #         system(paste0('convert -strokewidth 5 -fill red -draw " line ', x, ',60 ', x, ',542" /Users/niko/github/sle2016partanen/data/praat_MSF_vasilei_kpv/vsmall.png ', '/Users/niko/github/sle2016partanen/data/praat_MSF_vasilei_kpv/plot/vasilei-', x, '.png'))
+# # })
+# 
+# d_ply(interval_info, .(name), function(x) {
+#         system(paste0('convert -strokewidth 10 -fill red -draw " line ', x$interval, ',60 ', x$interval, ',542" /Users/niko/github/sle2016partanen/data/praat_MSF_vasilei_kpv/vsmall.png ', '/Users/niko/github/sle2016partanen/data/praat_MSF_vasilei_kpv/plot/vasilei-', x$name, '.png'))
+# })
+# 
+# system("ffmpeg -framerate 100 -i data/praat_MSF_vasilei_kpv/plot/vasilei-%3d.png -c:v libx264 -r 30 -pix_fmt yuv420p data/praat_MSF_vasilei_kpv/video.mp4")
+# 
+# if (file.exists("./data/video.mp4" == F)) {
+# system("ffmpeg -i ./data/video.mp4 -i ./data/praat_MSF_vasilei_kpv.mp3 -c:v copy -c:a aac -strict experimental data/output.mp4")
+# }
+#  ffmpeg -framerate 60 -i image-%03d.png video.webm
+#  
+#  ffmpeg -framerate 60  -i ~/github/sle2016partanen/data/praat_MSF_vasilei_kpv/plot/*png ~/github/sle2016partanen/data/praat_MSF_vasilei_kpv/video.webm
+```
+
+
 ## Manual tasks
 
 Basic annotations on ELAN files are done manually. Similarly the work relies to many features of ELAN, for example, tokenization and copying tiers is done with built-in tools.

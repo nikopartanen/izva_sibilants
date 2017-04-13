@@ -1,15 +1,88 @@
-# Conclusions
+# Analysis
 
-```{r, echo=F, eval=T}
+```{r}
 library(FRelan)
 library(plyr)
 library(dplyr)
 library(xml2)
-eaf <- list.files("/Volumes/langdoc/langs/kpv/", pattern = ".eaf$", recursive = T, full.names = T)
-# eaf_xml <- llply(eaf, read_xml)
-# read_tier("/Volumes/langdoc/langs/kpv//kpv_izva20120111VVF-1/kpv_izva20120111VVF-1.eaf", linguistic_type = "sib", participant = ) %>%
-#         rename(sib = Content) %>%
-#         select(Speaker, sib) %>% mutate(sib_value = gsub("(\U0047\U0361\U0255|\U0047\U0361\U0291)", "", sib))
+library(readr)
+
+read_rds("~/langdoc/kpv/kpv_izva_corpus.rds") %>% filter(grepl("kpv_izva", session_name)) %>%
+        mutate(year = gsub("kpv_izva(\\d{4}).+", "\\1", session_name)) %>%
+        filter(! year < 1950) %>% 
+        filter(! year == 1968) %>% 
+        filter(! year == 1972) %>% 
+        filter(! grepl("00VKn\\d", session_name)) -> izva
+# izva %>% find_token("(зь|зё|зя|зю|зи|зе|сь|сё|ся|сю|си|се|Зь|Зё|Зя|Зю|Зи|Зе|Сь|Сё|Ся|Сю|Си|Се)") %>% count(token) %>% arrange(token) %>% readr::write_csv("analysis/etymons.csv")
+
+# ```{r}
+# print(system("git rev-parse --short HEAD", intern = TRUE))
+# ```
+#
+#
+
+# read_csv("analysis/etymons.csv") %>% distinct(X7)
+# 
+# izva %>% find_token("(зь|зё|зя|зю|зи|зе|сь|сё|ся|сю|си|се|Зь|Зё|Зя|Зю|Зи|Зе|Сь|Сё|Ся|Сю|Си|Се)") -> sibs_all
+# 
+# sibs_all %>% count(participant, session_name, year) %>% arrange(desc(n)) %>% View
+# 
+# izva %>% find_token("щ") %>% count(token) %>% arrange(desc(n))
+# 
+# izva %>% find_token("спасибо!") %>% open_eaf(1)
+
+# Compare how Igushev pronounces in new and old texts items like несьчассе
+# Things to look independently
+# - Proper nouns
+# - Numerals^
+# 
+# Good example:
+# поселениеяссьыс
+# предпенсионнэесь
+# программируйт-лӧсьӧд
+# психологию ~ психолигияыс
+# рӧбитысьяс - in kpv deriv > highly integrated
+# сбитӧны-сёрнитэны
+# кӧзяин ~ хозяин ~ сельскохозяйственный
+
+# We will throw this to HFST with some really fast and dirty trick
+
+# readr::write_delim(izva %>% select(word), path = "hfst/tokens", col_names = F)
+
+# cat tokens | hfst-lookup -q ~/GT/main/langs/kpv/src/analyser-gt-desc.hfstol | head -n1 | cut -f 3 > tokens_rus
+# cat tokens | hfst-lookup -q --max-number=1  ~/GT/main/langs/rus/src/analyser-gt-desc.hfstol | grep -v "^$" > tokens_rus
+
+
+
+
+```
+
+Total mixture of Standard Komi and Iźva -- but that is what these speech communities are!!!
+
+There are several other linguistic features which seem to co-occur with palatalization. These are at least:
+
+- Deaffricatization (close to complete)
+- Preference in 3PL verb forms with s-elements (muninɨ ~ munisnɨ ~ muninɨs ~ **munisnɨs**)
+
+Still no clear what individual factors are behind the variation!
+
+Question is quite complicated as there are several distinct topics to consider. Among these are the positions of sibilants in the word. If can make a difference whether the sibilant is in the stem or Komi suffix.
+
+There is also the question of Russian elements as code switching, or as ad-hoc borrowings, or as old already opaque borrowings. In this treatment I have considered the opaque dialectal borrowings to be part of native Komi lexicon, although the boundaries are not always that simple to draw.
+
+What goes on with high frequency Russian items such as numerals? How about very frequent elements like "всё"? Would "друзьях" be in all instances pronounced in entirely Russian manner, compared to possibly more nativized "друзьяяс"? There are also cases like "зависит" and "зависитӧ", where one has same stem but within Russian morphology as "зав исить-pres.3sg" and in Komi "зависитны-pres.3sg". Or "занимаются" and "занимайтчемаась". And what is *кальмозере*? кӧзяйка?
+
+There are also multiple cases where the same speakers pronounce Russian sibilant "щ". What is going on with that?
+
+# Conclusions
+
+```{r, echo=F, eval=T}
+# eaf <- list.files("/Volumes/langdoc/langs/kpv/", pattern = "eaf$", recursive = T, full.names = T)
+# sib <- ldply(eaf, function(x) {
+#         read_tier(x, linguistic_type = "sib")
+#        rename(sib = content) %>%
+#        select(participant, sib) %>% mutate(sib_value = gsub("(\U0047\U0361\U0255|\U0047\U0361\U0291)", "", sib))
+# })
 ```
 
 With many earlier studies it has been taken as granted that Iźva dialect of Komi Zyrian would have palatalized sibilants as a characteristic feature of this dialect, see for example [@igusev1972aTR], or their status is left uncovered but explicitly shows as same as in Standard Komi [@saxarovaEtAl1976a]. My study clearly challenges this view and proposes that in principle Iźva Komi has identical system of sibilants as there is in the Standard Komi, but some subvarieties of Iźva Komi differ from this. It is important to notice, that in the wider ethno-historical context it is necessary to view the palatalal sibilants as the primary and earlier feature of Iźva Komi, and the forms found in different subdialects as a later innovation.
