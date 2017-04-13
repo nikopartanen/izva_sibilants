@@ -84,20 +84,11 @@ The transcription system used is described in section \@ref(transcription-system
 
 This means that an utterance:
 
-```{r, echo=F}
+> сэсся кутісныс миянлысь юасьны
 
-# gloss <- sle2016partanen::add_gloss("пукав да сёй!",
-#           "Sit.down.IMP and eat.IMP",
-#           "Sit down and eat!")
+Would eventually result on the sibilant annotation tier as:
 
-# <!-- `r gloss` -->
-```
-
-
-
-Would eventually be transcribed on the sibilant annotation tier as:
-
->  mijanɨɕ / миянсьым (optional) / 6
+>  mijanɕɨm / миянсьым (optional) / 6
 
 This is not a perfect method, but the best I was able to come up within the rationale and limitations explained above. Now this line contains following pieces of information: **IPA transcription on phonetic level**, **proposed Cyrillic transcription -- this may differ from what is on the transcription tier at the moment, but comparison will be done later**, **tokenized unit we are dealing with on the current reference id**. The segment is time-aligned manually and while doing that the position within utterance is counted. There is some space for automation here, but it is still relatively easy to spot later when there have been mistakes, and adding token number manually is an easy to see which annotations have been listened through already.
 
